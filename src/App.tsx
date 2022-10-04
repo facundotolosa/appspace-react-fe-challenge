@@ -1,13 +1,15 @@
 import { ThemeProvider } from 'styled-components';
-import CharacterList from './components/CharacterList/CharacterList';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import styledMainTheme from './styledMainTheme';
-import { charactersToShow } from './mocks/characterMocks';
+import CharactersPage from './Pages/CharactersPage/CharactersPage';
 
 const App = () => {
 	return (
 		<ThemeProvider theme={styledMainTheme}>
-			<h1>Website under construction</h1>
-			<CharacterList charactersToShow={charactersToShow} />
+			<Routes>
+				<Route path="/" element={<Navigate to="/characters" />} />
+				<Route path="/characters" element={<CharactersPage />} />
+			</Routes>
 		</ThemeProvider>
 	);
 };
