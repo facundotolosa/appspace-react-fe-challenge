@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CharacterStyled = styled.div`
+export const CharacterStyled = styled.li`
 	width: 300px;
 	background-color: ${props => props.theme.firstColor};
 	padding: 20px;
