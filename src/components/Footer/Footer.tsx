@@ -16,15 +16,17 @@ const Footer = ({ nextPage, previousPage, actualPage, totalPages }: Props): JSX.
 				}}
 				disabled={actualPage === 1}
 			>
-				PREVIOUS
+				{'<<'}
 			</button>
 
-			<span className="notActualPage">{actualPage === 1 ? '-' : actualPage - 1}</span>
-			<span className="actualPage">{actualPage}</span>
-			<span className="notActualPage">{actualPage === totalPages ? '-' : actualPage + 1}</span>
+			<div className="pages">
+				<span className="notActualPage">{actualPage === 1 ? '-' : actualPage - 1}</span>
+				<span className="actualPage">{actualPage}</span>
+				<span className="notActualPage">{actualPage === totalPages ? '-' : actualPage + 1}</span>
+			</div>
 
 			<button onClick={() => nextPage()} disabled={actualPage === totalPages}>
-				NEXT
+				{'>>'}
 			</button>
 		</FooterStyled>
 	);

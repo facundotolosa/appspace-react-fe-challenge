@@ -8,17 +8,34 @@ export const FooterStyled = styled.footer`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
+	gap: 25px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+
+	.pages {
+		span {
+			margin: 0 5px;
+		}
+	}
 
 	.actualPage {
 		color: white;
-		font-family: 'Roboto', sans-serif;
-		font-size: 30px;
 	}
 
 	.notActualPage {
 		color: grey;
-		font-family: 'Roboto', sans-serif;
-		font-size: 25px;
+	}
+
+	button {
+		border: none;
+		background-color: transparent;
+		color: white;
+		font-size: 30px;
+		transition: all 0.3s;
+	}
+
+	button:hover {
+		cursor: pointer;
+		color: ${props => props.theme.fourthColor};
 	}
 `;
