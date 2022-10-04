@@ -3,6 +3,7 @@ import CharacterList from '../../components/CharacterList/CharacterList';
 import axios from 'axios';
 import Header from '../../components/Header/Header';
 import { CharactersPageStyled } from './CharactersPageStyled';
+import Footer from '../../components/Footer/Footer';
 
 const CharactersPage = () => {
 	const [charactersToShow, setCharactersToShow] = useState([]);
@@ -20,6 +21,7 @@ const CharactersPage = () => {
 		<CharactersPageStyled>
 			<Header />
 			<CharacterList charactersToShow={charactersToShow} />
+			<Footer />
 		</CharactersPageStyled>
 	);
 };
