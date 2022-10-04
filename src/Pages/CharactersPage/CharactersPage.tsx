@@ -9,15 +9,18 @@ const CharactersPage = () => {
 	const [charactersToShow, setCharactersToShow] = useState([]);
 	const [nextPage, setNextPage] = useState('');
 	const [previousPage, setPreviousPage] = useState('');
+	const [currentPage, setCurrentPage] = useState(1);
+	const [totalPages, setTotalPages] = useState(1);
 
 	useEffect(() => {
 		(async () => {
 			const {
 				data: { results, info }
-			} = await axios.get(`https://rickandmortyapi.com/api/character`);
+			} = await axios.get(`https://rickandmortyapi.com/api/character/?name=rick&status=alive`);
 			setCharactersToShow(results);
 			setPreviousPage(info.prev);
 			setNextPage(info.next);
+			setTotalPages(info.pages);
 		})();
 	}, []);
 
@@ -31,6 +34,7 @@ const CharactersPage = () => {
 			setCharactersToShow(results);
 			setPreviousPage(info.prev);
 			setNextPage(info.next);
+			setCurrentPage(currentPage + 1);
 		})();
 	};
 
@@ -44,6 +48,7 @@ const CharactersPage = () => {
 			setCharactersToShow(results);
 			setPreviousPage(info.prev);
 			setNextPage(info.next);
+			setCurrentPage(currentPage - 1);
 		})();
 	};
 
@@ -52,11 +57,10 @@ const CharactersPage = () => {
 			<Header />
 			<CharacterList charactersToShow={charactersToShow} />
 			<Footer
-				actualPage={1}
+				actualPage={currentPage}
 				nextPage={showNextPage}
 				previousPage={showPreviousPage}
-				disablePrevious={!previousPage}
-				disableNext={!nextPage}
+				totalPages={totalPages}
 			/>
 		</CharactersPageStyled>
 	);

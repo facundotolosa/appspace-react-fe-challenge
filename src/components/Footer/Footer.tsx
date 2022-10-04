@@ -4,24 +4,27 @@ interface Props {
 	nextPage: () => void;
 	previousPage: () => void;
 	actualPage: number;
-	disablePrevious: boolean;
-	disableNext: boolean;
+	totalPages: number;
 }
 
-const Footer = ({ nextPage, previousPage, actualPage, disablePrevious, disableNext }: Props): JSX.Element => {
+const Footer = ({ nextPage, previousPage, actualPage, totalPages }: Props): JSX.Element => {
 	return (
 		<FooterStyled>
 			<button
 				onClick={() => {
 					previousPage();
 				}}
-				disabled={disablePrevious}
+				disabled={actualPage === 1}
 			>
-				Previous page
+				PREVIOUS
 			</button>
-			<span>{actualPage}</span>
-			<button onClick={() => nextPage()} disabled={disableNext}>
-				Next page
+
+			<span className="notActualPage">{actualPage === 1 ? '-' : actualPage - 1}</span>
+			<span className="actualPage">{actualPage}</span>
+			<span className="notActualPage">{actualPage === totalPages ? '-' : actualPage + 1}</span>
+
+			<button onClick={() => nextPage()} disabled={actualPage === totalPages}>
+				NEXT
 			</button>
 		</FooterStyled>
 	);
