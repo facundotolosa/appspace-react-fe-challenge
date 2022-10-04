@@ -9,7 +9,7 @@ export const CharacterStyled = styled.div`
 	flex-direction: column;
 	font-family: 'Gemunu Libre', sans-serif;
 
-	h2 {
+	.character-name {
 		text-align: center;
 		font-size: 35px;
 		margin: 5px 0;
