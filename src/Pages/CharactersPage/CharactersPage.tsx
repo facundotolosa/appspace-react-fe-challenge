@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import CharacterList from '../../components/CharacterList/CharacterList';
 import axios from 'axios';
+import Header from '../../components/Header/Header';
 
 const CharactersPage = () => {
 	const [charactersToShow, setCharactersToShow] = useState([]);
@@ -16,7 +17,7 @@ const CharactersPage = () => {
 
 	return (
 		<>
-			<h1>Website under construction</h1>
+			<Header />
 			<CharacterList charactersToShow={charactersToShow} />
 		</>
 	);
