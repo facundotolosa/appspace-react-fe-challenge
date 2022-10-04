@@ -1,10 +1,10 @@
-import Sample from './components/sample';
+import { ThemeProvider } from 'styled-components';
+import styledMainTheme from './styledMainTheme';
 
-/**
- * This is the entry point of the App, feel free to
- * modify this file as you want!
- *
- */
-const App = () => <Sample />;
+const App = () => (
+	<ThemeProvider theme={styledMainTheme}>
+		<h1>Website under construction</h1>
+	</ThemeProvider>
+);
 
 export default App;
