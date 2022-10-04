@@ -1,13 +1,13 @@
 import { ThemeProvider } from 'styled-components';
-import Character from './components/Character/Character';
-import { character } from './mocks/characterMocks';
+import CharacterList from './components/CharacterList/CharacterList';
 import styledMainTheme from './styledMainTheme';
+import { charactersToShow } from './mocks/characterMocks';
 
 const App = () => {
 	return (
 		<ThemeProvider theme={styledMainTheme}>
 			<h1>Website under construction</h1>
-			<Character character={character} />
+			<CharacterList charactersToShow={charactersToShow} />
 		</ThemeProvider>
 	);
 };
