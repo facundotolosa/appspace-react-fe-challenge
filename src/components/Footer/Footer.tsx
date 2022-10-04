@@ -4,20 +4,25 @@ interface Props {
 	nextPage: () => void;
 	previousPage: () => void;
 	actualPage: number;
+	disablePrevious: boolean;
+	disableNext: boolean;
 }
 
-const Footer = ({ nextPage, previousPage, actualPage }: Props): JSX.Element => {
+const Footer = ({ nextPage, previousPage, actualPage, disablePrevious, disableNext }: Props): JSX.Element => {
 	return (
 		<FooterStyled>
 			<button
 				onClick={() => {
 					previousPage();
 				}}
+				disabled={disablePrevious}
 			>
 				Previous page
 			</button>
 			<span>{actualPage}</span>
-			<button onClick={() => nextPage()}>Next page</button>
+			<button onClick={() => nextPage()} disabled={disableNext}>
+				Next page
+			</button>
 		</FooterStyled>
 	);
 };

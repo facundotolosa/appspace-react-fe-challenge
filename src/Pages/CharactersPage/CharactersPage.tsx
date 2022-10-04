@@ -16,6 +16,7 @@ const CharactersPage = () => {
 				data: { results, info }
 			} = await axios.get(`https://rickandmortyapi.com/api/character`);
 			setCharactersToShow(results);
+			setPreviousPage(info.prev);
 			setNextPage(info.next);
 		})();
 	}, []);
@@ -50,7 +51,13 @@ const CharactersPage = () => {
 		<CharactersPageStyled>
 			<Header />
 			<CharacterList charactersToShow={charactersToShow} />
-			<Footer actualPage={1} nextPage={showNextPage} previousPage={showPreviousPage} />
+			<Footer
+				actualPage={1}
+				nextPage={showNextPage}
+				previousPage={showPreviousPage}
+				disablePrevious={!previousPage}
+				disableNext={!nextPage}
+			/>
 		</CharactersPageStyled>
 	);
 };
