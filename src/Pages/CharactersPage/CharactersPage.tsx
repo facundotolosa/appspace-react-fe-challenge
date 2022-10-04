@@ -21,7 +21,6 @@ const CharactersPage = () => {
 		<CharactersPageStyled>
 			<Header />
 			<CharacterList charactersToShow={charactersToShow} />
-			<Footer />
 		</CharactersPageStyled>
 	);
 };
