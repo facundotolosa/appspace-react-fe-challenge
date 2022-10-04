@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const CharacterListStyled = styled.ul`
 	margin: 20px auto;
+	margin-bottom: 0px;
 	padding: 0px;
 	display: flex;
 	flex-direction: row;
