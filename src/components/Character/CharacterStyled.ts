@@ -8,6 +8,7 @@ export const CharacterStyled = styled.li`
 	display: flex;
 	flex-direction: column;
 	font-family: 'Gemunu Libre', sans-serif;
+	border-radius: 5px;
 
 	.character-name {
 		text-align: center;
@@ -22,6 +23,16 @@ export const CharacterStyled = styled.li`
 
 		&:first-of-type {
 			margin-bottom: 3px;
+		}
+	}
+
+	.more-info {
+		font-size: 22px;
+		color: white;
+		text-align: right;
+		margin-top: 5px;
+		&:hover {
+			cursor: pointer;
 		}
 	}
 `;
