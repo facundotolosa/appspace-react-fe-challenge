@@ -38,4 +38,9 @@ export const FooterStyled = styled.footer`
 		cursor: pointer;
 		color: ${props => props.theme.fourthColor};
 	}
+
+	button:disabled {
+		color: grey;
+		cursor: auto;
+	}
 `;
