@@ -21,7 +21,6 @@ const CharactersPage = () => {
 	return (
 		<CharactersPageStyled>
 			<Header />
-
 			{isLoading ? (
 				<span>Loading...</span>
 			) : (

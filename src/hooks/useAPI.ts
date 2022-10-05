@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 
 const useAPI = (requestUrl: string) => {
-	const { data, isLoading, refetch } = useQuery(['characters', requestUrl], async () => {
+	const useQueryResponse = useQuery(['characters', requestUrl], async () => {
 		const {
 			data: {
 				info: { next, prev, pages },
@@ -13,6 +13,6 @@ const useAPI = (requestUrl: string) => {
 		return { next, prev, pages, results };
 	});
 
-	return { data, isLoading, refetch };
+	return useQueryResponse;
 };
 export default useAPI;
