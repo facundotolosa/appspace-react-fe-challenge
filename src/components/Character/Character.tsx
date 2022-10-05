@@ -10,13 +10,17 @@ const Character = ({ character: { image, name, species, gender, id } }: Props): 
 
 	return (
 		<CharacterStyled>
-			<img src={image} alt={name} />
-			<h2 className="character-name">{name}</h2>
-			<span className="character-info">Species: {species}</span>
-			<span className="character-info">Gender: {gender}</span>
-			<button className="more-info" onClick={() => navigate(`/character/${id}`)}>
-				More info
-			</button>
+			<div className="character-info-picture">
+				<img src={image} alt={name} />
+				<h2 className="character-name">{name}</h2>
+				<span className="character-info">Species: {species}</span>
+				<span className="character-info">Gender: {gender}</span>
+			</div>
+			<div className="more-info">
+				<button className="more-info-button" onClick={() => navigate(`/character/${id}`)}>
+					More info
+				</button>
+			</div>
 		</CharacterStyled>
 	);
 };
