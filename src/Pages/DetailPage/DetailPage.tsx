@@ -1,17 +1,26 @@
 import { useParams } from 'react-router-dom';
 import { DetailPageStyled } from './DetailPageStyled';
-import useAPI from '../../hooks/useAPI';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import Header from '../../components/Header/Header';
 
-const CharactersPage = () => {
+const DetailPage = () => {
 	const { id } = useParams();
 
-	const { data, isLoading } = useAPI(`https://rickandmortyapi.com/api/character/${id}`);
+	const { data } = useQuery(['character'], async () => {
+		const {
+			data: { name, status, species, gender, image }
+		} = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+
+		return { name, status, species, gender, image };
+	});
 
 	return (
 		<DetailPageStyled>
-			<h1>Detail page</h1>
+			<Header />
+			<h1>Detail page of {data?.name}</h1>
 		</DetailPageStyled>
 	);
 };
 
-export default CharactersPage;
+export default DetailPage;
