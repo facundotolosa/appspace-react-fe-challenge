@@ -4,64 +4,44 @@ import axios from 'axios';
 import Header from '../../components/Header/Header';
 import { CharactersPageStyled } from './CharactersPageStyled';
 import Footer from '../../components/Footer/Footer';
+import { useQuery } from 'react-query';
 
 const CharactersPage = () => {
-	const [charactersToShow, setCharactersToShow] = useState([]);
-	const [nextPage, setNextPage] = useState('');
-	const [previousPage, setPreviousPage] = useState('');
 	const [currentPage, setCurrentPage] = useState(1);
-	const [totalPages, setTotalPages] = useState(1);
+	let link = 'https://rickandmortyapi.com/api/character/';
 
-	useEffect(() => {
-		(async () => {
-			const {
-				data: { results, info }
-			} = await axios.get(`https://rickandmortyapi.com/api/character/?name=rick&status=alive`);
-			setCharactersToShow(results);
-			setPreviousPage(info.prev);
-			setNextPage(info.next);
-			setTotalPages(info.pages);
-		})();
-	}, []);
+	const { data, error, isLoading, refetch } = useQuery(['characters'], async () => {
+		const { data } = await axios.get(link);
+
+		return data;
+	});
 
 	const showNextPage = () => {
-		(async () => {
-			window.scrollTo(0, 0);
-			const {
-				data: { results, info }
-			} = await axios.get(nextPage);
-
-			setCharactersToShow(results);
-			setPreviousPage(info.prev);
-			setNextPage(info.next);
-			setCurrentPage(currentPage + 1);
-		})();
+		link = data.info.next;
+		setCurrentPage(currentPage + 1);
+		refetch();
 	};
 
 	const showPreviousPage = () => {
-		(async () => {
-			window.scrollTo(0, 0);
-			const {
-				data: { results, info }
-			} = await axios.get(previousPage);
-
-			setCharactersToShow(results);
-			setPreviousPage(info.prev);
-			setNextPage(info.next);
-			setCurrentPage(currentPage - 1);
-		})();
+		link = data.info.prev;
+		setCurrentPage(currentPage - 1);
+		refetch();
 	};
 
 	return (
 		<CharactersPageStyled>
 			<Header />
-			<CharacterList charactersToShow={charactersToShow} />
-			<Footer
-				actualPage={currentPage}
-				nextPage={showNextPage}
-				previousPage={showPreviousPage}
-				totalPages={totalPages}
-			/>
+			{data ? <CharacterList charactersToShow={data?.results} /> : ''}
+			{data ? (
+				<Footer
+					actualPage={currentPage}
+					nextPage={showNextPage}
+					previousPage={showPreviousPage}
+					totalPages={data.info.pages}
+				/>
+			) : (
+				''
+			)}
 		</CharactersPageStyled>
 	);
 };
