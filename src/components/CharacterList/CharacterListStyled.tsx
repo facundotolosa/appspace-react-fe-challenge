@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const CharacterListStyled = styled.ul`
-	margin: 20px auto;
+	margin: 0px auto;
 	margin-bottom: 0px;
-	padding: 0px;
+	padding: 20px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
