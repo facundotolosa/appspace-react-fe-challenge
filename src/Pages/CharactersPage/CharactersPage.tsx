@@ -1,67 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CharacterList from '../../components/CharacterList/CharacterList';
 import axios from 'axios';
 import Header from '../../components/Header/Header';
 import { CharactersPageStyled } from './CharactersPageStyled';
 import Footer from '../../components/Footer/Footer';
+import { useQuery } from 'react-query';
 
 const CharactersPage = () => {
-	const [charactersToShow, setCharactersToShow] = useState([]);
-	const [nextPage, setNextPage] = useState('');
-	const [previousPage, setPreviousPage] = useState('');
 	const [currentPage, setCurrentPage] = useState(1);
-	const [totalPages, setTotalPages] = useState(1);
+	let requestURL = 'https://rickandmortyapi.com/api/character/';
 
-	useEffect(() => {
-		(async () => {
-			const {
-				data: { results, info }
-			} = await axios.get(`https://rickandmortyapi.com/api/character/?name=rick&status=alive`);
-			setCharactersToShow(results);
-			setPreviousPage(info.prev);
-			setNextPage(info.next);
-			setTotalPages(info.pages);
-		})();
-	}, []);
+	const { data, error, isLoading, refetch } = useQuery(['characters'], async () => {
+		const {
+			data: {
+				info: { next, prev, pages },
+				results
+			}
+		} = await axios.get(requestURL);
 
-	const showNextPage = () => {
-		(async () => {
-			window.scrollTo(0, 0);
-			const {
-				data: { results, info }
-			} = await axios.get(nextPage);
+		return { next, prev, pages, results };
+	});
 
-			setCharactersToShow(results);
-			setPreviousPage(info.prev);
-			setNextPage(info.next);
-			setCurrentPage(currentPage + 1);
-		})();
-	};
-
-	const showPreviousPage = () => {
-		(async () => {
-			window.scrollTo(0, 0);
-			const {
-				data: { results, info }
-			} = await axios.get(previousPage);
-
-			setCharactersToShow(results);
-			setPreviousPage(info.prev);
-			setNextPage(info.next);
-			setCurrentPage(currentPage - 1);
-		})();
+	const paginate = (nextPage: boolean) => {
+		requestURL = nextPage ? data?.next : data?.prev;
+		setCurrentPage(nextPage ? currentPage + 1 : currentPage - 1);
+		window.scrollTo(0, 0);
+		refetch();
 	};
 
 	return (
 		<CharactersPageStyled>
 			<Header />
-			<CharacterList charactersToShow={charactersToShow} />
-			<Footer
-				actualPage={currentPage}
-				nextPage={showNextPage}
-				previousPage={showPreviousPage}
-				totalPages={totalPages}
-			/>
+			{isLoading ? (
+				<span>Loading...</span>
+			) : (
+				<>
+					<CharacterList charactersToShow={data?.results} />{' '}
+					<Footer
+						actualPage={currentPage}
+						nextPage={() => paginate(true)}
+						previousPage={() => paginate(false)}
+						totalPages={data?.pages}
+					/>
+				</>
+			)}
 		</CharactersPageStyled>
 	);
 };
