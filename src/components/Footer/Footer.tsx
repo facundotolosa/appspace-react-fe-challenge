@@ -16,7 +16,7 @@ const Footer = ({ nextPage, previousPage, actualPage, totalPages }: Props): JSX.
 				}}
 				disabled={actualPage === 1}
 			>
-				{'<<'}
+				{'<'}
 			</button>
 
 			<div className="pages">
@@ -26,7 +26,7 @@ const Footer = ({ nextPage, previousPage, actualPage, totalPages }: Props): JSX.
 			</div>
 
 			<button onClick={() => nextPage()} disabled={actualPage === totalPages}>
-				{'>>'}
+				{'>'}
 			</button>
 		</FooterStyled>
 	);
