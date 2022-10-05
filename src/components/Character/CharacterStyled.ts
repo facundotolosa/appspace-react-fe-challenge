@@ -7,7 +7,14 @@ export const CharacterStyled = styled.li`
 	box-shadow: 4px 4px 9px -1px rgba(0, 0, 0, 0.75);
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	font-family: 'Gemunu Libre', sans-serif;
+	border-radius: 5px;
+
+	.character-info-picture {
+		display: flex;
+		flex-direction: column;
+	}
 
 	.character-name {
 		text-align: center;
@@ -22,6 +29,31 @@ export const CharacterStyled = styled.li`
 
 		&:first-of-type {
 			margin-bottom: 3px;
+		}
+	}
+
+	.more-info {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 10px;
+	}
+
+	.more-info-button {
+		width: 100px;
+		height: 22px;
+		font-size: 22px;
+		background-color: transparent;
+		color: white;
+		text-decoration: underline white;
+		text-align: right;
+		padding: 0px;
+		border: none;
+		transition: 0.2s all;
+
+		&:hover {
+			cursor: pointer;
+			color: ${props => props.theme.secondColor};
+			text-decoration: underline ${props => props.theme.secondColor};
 		}
 	}
 `;
