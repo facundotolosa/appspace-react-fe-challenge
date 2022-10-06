@@ -5,3 +5,16 @@ export interface ICharacter {
 	gender: string;
 	id: number;
 }
+
+export interface ICharacterDetail {
+	image: string;
+	name: string;
+	species: string;
+	gender: string;
+	status: string;
+	origin: {
+		name: string;
+	};
+	id: number;
+	episode: string[];
+}

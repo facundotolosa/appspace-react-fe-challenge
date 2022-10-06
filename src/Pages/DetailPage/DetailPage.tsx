@@ -3,22 +3,24 @@ import { DetailPageStyled } from './DetailPageStyled';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import Header from '../../components/Header/Header';
+import CharacterDetail from '../../components/CharacterDetail/CharacterDetail';
+import { ICharacterDetail } from '../../types/characterInterfaces';
 
 const DetailPage = () => {
 	const { id } = useParams();
 
-	const { data } = useQuery(['character'], async () => {
+	const { data, isLoading } = useQuery(['character'], async () => {
 		const {
-			data: { name, status, species, gender, image }
+			data: { name, status, species, gender, image, origin }
 		} = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
 
-		return { name, status, species, gender, image };
+		return { name, status, species, gender, image, origin };
 	});
 
 	return (
 		<DetailPageStyled>
 			<Header />
-			<h1>Detail page of {data?.name}</h1>
+			{!isLoading && <CharacterDetail character={data as ICharacterDetail} />}
 		</DetailPageStyled>
 	);
 };
