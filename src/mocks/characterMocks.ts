@@ -6,6 +6,36 @@ export const character = {
 	id: 7
 };
 
+export const characterDetail = {
+	name: 'Mock character',
+	status: 'Alive',
+	species: 'Human',
+	gender: 'Male',
+	origin: {
+		name: 'Mock origin'
+	},
+	image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+	episode: ['https://rickandmortyapi.com/api/episode/1']
+};
+
+export const characterDetailFiveChapters = {
+	name: 'Mock character',
+	status: 'Dead',
+	species: 'Human',
+	gender: 'Male',
+	origin: {
+		name: 'Mock origin'
+	},
+	image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+	episode: [
+		'https://rickandmortyapi.com/api/episode/1',
+		'https://rickandmortyapi.com/api/episode/2',
+		'https://rickandmortyapi.com/api/episode/3',
+		'https://rickandmortyapi.com/api/episode/4',
+		'https://rickandmortyapi.com/api/episode/5'
+	]
+};
+
 export const charactersToShow = [
 	{
 		name: 'Rick Sanchez',
