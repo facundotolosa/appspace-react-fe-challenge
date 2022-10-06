@@ -6,6 +6,7 @@ export const CharacterDetailStyled = styled.div`
 	padding: 20px;
 	box-shadow: 4px 4px 9px -1px rgba(0, 0, 0, 0.75);
 	font-family: 'Gemunu Libre', sans-serif;
+	color: white;
 	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
@@ -18,7 +19,7 @@ export const CharacterDetailStyled = styled.div`
 	}
 
 	.name-and-status {
-		margin-top: 5px;
+		margin-top: 10px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -29,7 +30,6 @@ export const CharacterDetailStyled = styled.div`
 		text-align: center;
 		font-size: 35px;
 		margin: 0;
-		color: white;
 		display: inline;
 		max-width: 200px;
 	}
@@ -41,16 +41,31 @@ export const CharacterDetailStyled = styled.div`
 		border: 2px solid black;
 
 		&-alive {
-			background-color: green;
+			background-color: #abff4f;
 		}
 
 		&-dead {
-			background-color: red;
+			background-color: #d90429;
+		}
+	}
+
+	.more-info {
+		list-style: none;
+		padding: 0px;
+		margin: 10px 0 0 0;
+		font-size: 23px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		li {
+			display: flex;
+			flex-direction: row;
 		}
 	}
 
 	@media (min-width: 600px) {
-		width: 530px;
+		width: 540px;
 		flex-direction: row;
 
 		img {
@@ -58,7 +73,11 @@ export const CharacterDetailStyled = styled.div`
 		}
 
 		.character-info {
-			padding-left: 10px;
+			padding-left: 20px;
+		}
+
+		.name-and-status {
+			margin: 0px;
 		}
 	}
 `;

@@ -15,6 +15,6 @@ export interface ICharacterDetail {
 	origin: {
 		name: string;
 	};
-	id: number;
+
 	episode: string[];
 }

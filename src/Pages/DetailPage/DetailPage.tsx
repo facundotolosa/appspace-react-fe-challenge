@@ -11,10 +11,10 @@ const DetailPage = () => {
 
 	const { data, isLoading } = useQuery(['character'], async () => {
 		const {
-			data: { name, status, species, gender, image, origin }
+			data: { name, status, species, gender, image, origin, episode }
 		} = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
 
-		return { name, status, species, gender, image, origin };
+		return { name, status, species, gender, image, origin, episode };
 	});
 
 	return (
