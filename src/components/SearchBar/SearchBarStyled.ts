@@ -12,13 +12,9 @@ export const SearchBarStyled = styled.div`
 	color: white;
 	z-index: 20;
 	justify-content: space-around;
-	margin: 10px auto;
+	margin: 20px auto;
 	padding: 0 8px;
-
-	img {
-		height: 24px;
-		width: 24px;
-	}
+	margin-bottom: 0px;
 
 	label {
 		display: none;
@@ -26,9 +22,11 @@ export const SearchBarStyled = styled.div`
 
 	input {
 		height: 20px;
-		width: 105px;
+		padding: 0px;
+		width: 130px;
 		border: none;
-		margin-left: 2px;
+		font-size: 16px;
+		font-family: 'Roboto', sans-serif;
 	}
 
 	input:focus {
@@ -65,11 +63,6 @@ export const SearchBarStyled = styled.div`
 		z-index: 20;
 		justify-content: space-around;
 		margin: 10px auto;
-
-		img {
-			height: 24px;
-			width: 24px;
-		}
 
 		label {
 			display: none;
