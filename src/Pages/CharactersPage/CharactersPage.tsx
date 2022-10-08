@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import { CharactersPageStyled } from './CharactersPageStyled';
 import Footer from '../../components/Footer/Footer';
 import useAPI from '../../hooks/useAPI';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -21,11 +22,12 @@ const CharactersPage = () => {
 	return (
 		<CharactersPageStyled>
 			<Header />
+			<SearchBar />
 			{isLoading ? (
 				<span>Loading...</span>
 			) : (
 				<>
-					<CharacterList charactersToShow={data?.results} />{' '}
+					<CharacterList charactersToShow={data?.results} />
 					<Footer
 						actualPage={currentPage}
 						nextPage={() => paginate(true)}
