@@ -28,8 +28,7 @@ const CharactersPage = () => {
 				<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 				<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 			</section>
-			<Loading />
-			{/* {isLoading && <span>Loading...</span>}
+			{isLoading && <Loading />}
 			{!isLoading && (
 				<>
 					<CharacterList charactersToShow={data?.results} />
@@ -40,7 +39,7 @@ const CharactersPage = () => {
 						totalPages={data?.pages}
 					/>
 				</>
-			)} */}
+			)}
 		</CharactersPageStyled>
 	);
 };
