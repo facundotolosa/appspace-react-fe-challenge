@@ -22,7 +22,7 @@ const CharactersPage = () => {
 	return (
 		<CharactersPageStyled>
 			<Header />
-			<SearchBar />
+			<SearchBar setRequestURL={setRequestURL} />
 			{isLoading ? (
 				<span>Loading...</span>
 			) : (

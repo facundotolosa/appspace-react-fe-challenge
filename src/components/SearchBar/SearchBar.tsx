@@ -1,9 +1,13 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'react';
 import { SearchBarStyled } from './SearchBarStyled';
 
-const SearchBar = (): JSX.Element => {
+interface Props {
+	setRequestURL: Dispatch<SetStateAction<string>>;
+}
+
+const SearchBar = ({ setRequestURL }: Props): JSX.Element => {
 	const initialFormValue = {
 		search: ''
 	};
@@ -17,9 +21,14 @@ const SearchBar = (): JSX.Element => {
 		});
 	};
 
+	const submitForm = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		setRequestURL(`https://rickandmortyapi.com/api/character/?name=${formValues.search}`);
+	};
+
 	return (
 		<SearchBarStyled>
-			<div className="form-field">
+			<form className="form-field" onSubmit={submitForm}>
 				<label htmlFor="search">Search</label>
 				<input
 					type="text"
@@ -29,7 +38,7 @@ const SearchBar = (): JSX.Element => {
 					autoComplete="off"
 					placeholder="Search..."
 				/>
-			</div>
+			</form>
 			<FontAwesomeIcon icon={faMagnifyingGlass} color="black" />
 		</SearchBarStyled>
 	);

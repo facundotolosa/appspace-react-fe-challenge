@@ -10,7 +10,6 @@ export const SearchBarStyled = styled.div`
 	justify-content: center;
 	flex-direction: row;
 	color: white;
-	/* font-family: "Koulen"; */
 	z-index: 20;
 	justify-content: space-around;
 	margin-top: 10px;
