@@ -12,19 +12,18 @@ const DetailPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
-	const { data, isLoading } = useQuery(['character'], async () => {
-		const {
-			data: { name, status, species, gender, image, origin, episode }
-		} = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+	const { data, isLoading, isError } = useQuery(['character'], async () => {
+		const { data } = await axios.get(`${process.env.REACT_APP_API_URL}${id}`);
 
-		return { name, status, species, gender, image, origin, episode };
+		return data;
 	});
 
 	return (
 		<DetailPageStyled>
 			<Header />
+			{isError && <span>Error getting the data. Please try again later :(</span>}
 			{isLoading && <Loading />}
-			{!isLoading && <CharacterDetail character={data as ICharacterDetail} />}
+			{!isLoading && !isError && <CharacterDetail character={data as ICharacterDetail} />}
 			<span className="back-button">
 				<button
 					onClick={() => {
