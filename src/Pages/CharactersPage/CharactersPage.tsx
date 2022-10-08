@@ -23,8 +23,10 @@ const CharactersPage = () => {
 	return (
 		<CharactersPageStyled>
 			<Header />
-			<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
-			<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
+			<section className="filters">
+				<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
+				<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
+			</section>
 			{isLoading && <span>Loading...</span>}
 			{!isLoading && (
 				<>

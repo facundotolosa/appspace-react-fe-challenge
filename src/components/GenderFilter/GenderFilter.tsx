@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { GenderFilterStyled } from './GenderFilterStyled';
 
 interface Props {
@@ -14,17 +14,13 @@ const GenderFilter = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => 
 
 	return (
 		<GenderFilterStyled>
-			<div className="form-field__Gender">
-				<label htmlFor="Gender">Gender</label>
-				<select name="Gender" id="Gender" onChange={handleGenderInputChange} defaultValue={''}>
-					<option value="" disabled>
-						Choose a gender
-					</option>
-					<option value="Male">Male</option>
-					<option value="Female">Female</option>
-					<option value="unknown">Unknown</option>
-				</select>
-			</div>
+			<label htmlFor="Gender">Gender</label>
+			<select name="Gender" id="Gender" onChange={handleGenderInputChange} className="select-gender">
+				<option value="">All genders</option>
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+				<option value="unknown">Unknown</option>
+			</select>
 		</GenderFilterStyled>
 	);
 };

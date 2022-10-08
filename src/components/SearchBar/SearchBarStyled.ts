@@ -12,9 +12,7 @@ export const SearchBarStyled = styled.div`
 	color: white;
 	z-index: 20;
 	justify-content: space-around;
-	margin: 20px auto;
-	padding: 0 8px;
-	margin-bottom: 0px;
+	padding: 0 0 0 8px;
 
 	label {
 		display: none;
@@ -62,7 +60,6 @@ export const SearchBarStyled = styled.div`
 		color: white;
 		z-index: 20;
 		justify-content: space-around;
-		margin: 10px auto;
 
 		label {
 			display: none;
