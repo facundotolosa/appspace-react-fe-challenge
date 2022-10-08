@@ -7,6 +7,7 @@ import CharacterDetail from '../../components/CharacterDetail/CharacterDetail';
 import { ICharacterDetail } from '../../types/characterInterfaces';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
 
 const DetailPage = () => {
 	const { id } = useParams();
@@ -22,7 +23,7 @@ const DetailPage = () => {
 		<DetailPageStyled>
 			<Header />
 			{isLoading && <Loading />}
-			{isError && <span>Error getting the data. Please try again later :(</span>}
+			{isError && <Error />}
 			{!isLoading && !isError && <CharacterDetail character={data as ICharacterDetail} />}
 			<span className="back-button">
 				<button

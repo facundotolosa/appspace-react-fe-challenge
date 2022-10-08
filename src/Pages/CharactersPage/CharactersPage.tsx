@@ -7,6 +7,7 @@ import useAPI from '../../hooks/useAPI';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import GenderFilter from '../../components/GenderFilter/GenderFilter';
 import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
 
 const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -28,8 +29,9 @@ const CharactersPage = () => {
 				<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 				<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 			</section>
+
 			{isLoading && <Loading />}
-			{isError && <span>Error getting the data. Please try again later :(</span>}
+			{isError && <Error />}
 			{!isLoading && !isError && (
 				<>
 					<CharacterList charactersToShow={data?.results} />
