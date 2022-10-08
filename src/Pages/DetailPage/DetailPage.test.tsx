@@ -1,17 +1,25 @@
-import { render, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DetailPage from './DetailPage';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { characterDetail } from '../../mocks/characterMocks';
+import { setLogger } from 'react-query';
 
 const mockUseNavigate = jest.fn();
+let mockId = '44';
 
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),
-	useParams: () => ({ id: '44' }),
+	useParams: () => ({ id: mockId }),
 	useNavigate: () => mockUseNavigate
 }));
+
+setLogger({
+	log: () => {},
+	warn: () => {},
+	error: () => {}
+});
 
 describe('Given the DetailPage component', () => {
 	describe("When it's rendered with a character id as a param", () => {
@@ -56,6 +64,32 @@ describe('Given the DetailPage component', () => {
 			userEvent.click(receivedButton);
 
 			expect(mockUseNavigate).toHaveBeenCalledWith('/characters');
+		});
+	});
+
+	describe("When it's instantiated with a character id that doesn't exists", () => {
+		test('Then it should show an error message', async () => {
+			const queryClient = new QueryClient({
+				defaultOptions: {
+					queries: {
+						retry: 0,
+						retryDelay: 1
+					}
+				}
+			});
+
+			mockId = '1000';
+			const errorMessage = 'Error getting the data. Please try again later :(';
+
+			render(
+				<BrowserRouter>
+					<QueryClientProvider client={queryClient}>
+						<DetailPage />
+					</QueryClientProvider>
+				</BrowserRouter>
+			);
+
+			await screen.findByText(errorMessage);
 		});
 	});
 });
