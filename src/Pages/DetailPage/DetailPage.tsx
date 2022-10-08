@@ -5,9 +5,11 @@ import axios from 'axios';
 import Header from '../../components/Header/Header';
 import CharacterDetail from '../../components/CharacterDetail/CharacterDetail';
 import { ICharacterDetail } from '../../types/characterInterfaces';
+import { useNavigate } from 'react-router-dom';
 
 const DetailPage = () => {
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	const { data, isLoading } = useQuery(['character'], async () => {
 		const {
@@ -21,6 +23,16 @@ const DetailPage = () => {
 		<DetailPageStyled>
 			<Header />
 			{!isLoading && <CharacterDetail character={data as ICharacterDetail} />}
+			<span className="back-button">
+				<button
+					onClick={() => {
+						window.scrollTo(0, 0);
+						navigate('/characters');
+					}}
+				>
+					Back to home
+				</button>
+			</span>
 		</DetailPageStyled>
 	);
 };
