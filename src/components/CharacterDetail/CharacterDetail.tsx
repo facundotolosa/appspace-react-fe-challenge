@@ -18,7 +18,7 @@ const CharacterDetail = ({
 }: Props): JSX.Element => {
 	return (
 		<CharacterDetailStyled>
-			<img src={image} alt={name} />
+			<img src={image} alt={name} className="character-image" />
 			<section className="character-info">
 				<div className="name-and-status">
 					<h2 className="character-name">{name}</h2>

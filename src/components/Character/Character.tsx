@@ -11,7 +11,7 @@ const Character = ({ character: { image, name, species, gender, id } }: Props): 
 	return (
 		<CharacterStyled>
 			<div className="character-info-picture">
-				<img src={image} alt={name} />
+				<img src={image} alt={name} className="character-image" />
 				<h2 className="character-name">{name}</h2>
 				<span className="character-info">Species: {species}</span>
 				<span className="character-info">Gender: {gender}</span>
