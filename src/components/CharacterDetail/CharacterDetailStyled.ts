@@ -64,11 +64,15 @@ export const CharacterDetailStyled = styled.div`
 		}
 	}
 
+	.character-image {
+		object-fit: cover;
+	}
+
 	@media (min-width: 600px) {
 		width: 540px;
 		flex-direction: row;
 
-		img {
+		.character-image {
 			width: 250px;
 		}
 

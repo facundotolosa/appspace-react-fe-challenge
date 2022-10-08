@@ -56,4 +56,8 @@ export const CharacterStyled = styled.li`
 			text-decoration: underline ${props => props.theme.secondColor};
 		}
 	}
+
+	.character-image {
+		object-fit: cover;
+	}
 `;
