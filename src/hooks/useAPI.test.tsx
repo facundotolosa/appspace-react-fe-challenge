@@ -17,7 +17,7 @@ describe('Given a useAPI custom hook', () => {
 				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 			);
 
-			const { result } = renderHook(() => useAPI('https://rickandmortyapi.com/api/character/'), {
+			const { result } = renderHook(() => useAPI(`${process.env.REACT_APP_API_URL}`), {
 				wrapper
 			});
 
