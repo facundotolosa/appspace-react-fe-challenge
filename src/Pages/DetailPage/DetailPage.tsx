@@ -22,6 +22,7 @@ const DetailPage = () => {
 	return (
 		<DetailPageStyled>
 			<Header />
+			{isLoading && <span>Loading...</span>}
 			{!isLoading && <CharacterDetail character={data as ICharacterDetail} />}
 			<span className="back-button">
 				<button
