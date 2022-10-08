@@ -23,9 +23,8 @@ const CharactersPage = () => {
 		<CharactersPageStyled>
 			<Header />
 			<SearchBar setRequestURL={setRequestURL} />
-			{isLoading ? (
-				<span>Loading...</span>
-			) : (
+			{isLoading && <span>Loading...</span>}
+			{!isLoading && (
 				<>
 					<CharacterList charactersToShow={data?.results} />
 					<Footer

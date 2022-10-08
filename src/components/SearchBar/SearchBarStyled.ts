@@ -12,7 +12,8 @@ export const SearchBarStyled = styled.div`
 	color: white;
 	z-index: 20;
 	justify-content: space-around;
-	margin-top: 10px;
+	margin: 10px auto;
+	padding: 0 8px;
 
 	img {
 		height: 24px;
@@ -34,6 +35,22 @@ export const SearchBarStyled = styled.div`
 		outline: none;
 	}
 
+	.search-form {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	button {
+		background-color: transparent;
+		width: 25px;
+		height: 25px;
+		padding: 0;
+		margin: 0;
+		border: none;
+	}
+
 	@media (min-width: 600px) {
 		display: contents;
 		width: 150px;
@@ -45,10 +62,9 @@ export const SearchBarStyled = styled.div`
 		justify-content: center;
 		flex-direction: row;
 		color: white;
-		/* font-family: "Koulen"; */
 		z-index: 20;
 		justify-content: space-around;
-		margin-top: 0px;
+		margin: 10px auto;
 
 		img {
 			height: 24px;
@@ -68,6 +84,10 @@ export const SearchBarStyled = styled.div`
 
 		input:focus {
 			outline: none;
+		}
+
+		button:hover {
+			cursor: pointer;
 		}
 	}
 `;

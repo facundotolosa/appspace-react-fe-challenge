@@ -28,7 +28,7 @@ const SearchBar = ({ setRequestURL }: Props): JSX.Element => {
 
 	return (
 		<SearchBarStyled>
-			<form className="form-field" onSubmit={submitForm}>
+			<form className="search-form" onSubmit={submitForm}>
 				<label htmlFor="search">Search</label>
 				<input
 					type="text"
@@ -38,8 +38,11 @@ const SearchBar = ({ setRequestURL }: Props): JSX.Element => {
 					autoComplete="off"
 					placeholder="Search..."
 				/>
+
+				<button type="submit">
+					<FontAwesomeIcon icon={faMagnifyingGlass} color="black" type="submit" />
+				</button>
 			</form>
-			<FontAwesomeIcon icon={faMagnifyingGlass} color="black" />
 		</SearchBarStyled>
 	);
 };
