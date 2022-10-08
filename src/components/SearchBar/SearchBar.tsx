@@ -5,9 +5,10 @@ import { SearchBarStyled } from './SearchBarStyled';
 
 interface Props {
 	setRequestURL: Dispatch<SetStateAction<string>>;
+	setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
-const SearchBar = ({ setRequestURL }: Props): JSX.Element => {
+const SearchBar = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => {
 	const initialFormValue = {
 		search: ''
 	};
@@ -23,6 +24,7 @@ const SearchBar = ({ setRequestURL }: Props): JSX.Element => {
 
 	const submitForm = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		setCurrentPage(1);
 		setRequestURL(`https://rickandmortyapi.com/api/character/?name=${formValues.search}`);
 	};
 
