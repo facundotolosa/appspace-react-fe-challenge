@@ -25,7 +25,7 @@ const SearchBar = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => {
 	const submitForm = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setCurrentPage(1);
-		setRequestURL(`https://rickandmortyapi.com/api/character/?name=${formValues.search}`);
+		setRequestURL(`${process.env.REACT_APP_API_URL}?name=${formValues.search}`);
 	};
 
 	return (

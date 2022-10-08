@@ -8,7 +8,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 
 const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const [requestURL, setRequestURL] = useState('https://rickandmortyapi.com/api/character/');
+	const [requestURL, setRequestURL] = useState(`${process.env.REACT_APP_API_URL}`);
 
 	const { data, isLoading, refetch } = useAPI(requestURL);
 

@@ -9,7 +9,7 @@ describe('Given a SearchBar component', () => {
 			const setRequestURLMock: Dispatch<SetStateAction<string>> = jest.fn();
 			const setCurrentPageMock: Dispatch<SetStateAction<number>> = jest.fn();
 			const nameToSearch = 'Morty';
-			const urlRequest = `https://rickandmortyapi.com/api/character/?name=${nameToSearch}`;
+			const urlRequest = `${process.env.REACT_APP_API_URL}?name=${nameToSearch}`;
 
 			render(<SearchBar setRequestURL={setRequestURLMock} setCurrentPage={setCurrentPageMock} />);
 
