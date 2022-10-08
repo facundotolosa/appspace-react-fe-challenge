@@ -7,24 +7,24 @@ import CharacterDetail from '../../components/CharacterDetail/CharacterDetail';
 import { ICharacterDetail } from '../../types/characterInterfaces';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
 
 const DetailPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
-	const { data, isLoading } = useQuery(['character'], async () => {
-		const {
-			data: { name, status, species, gender, image, origin, episode }
-		} = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+	const { data, isLoading, isError } = useQuery(['character'], async () => {
+		const { data } = await axios.get(`${process.env.REACT_APP_API_URL}${id}`);
 
-		return { name, status, species, gender, image, origin, episode };
+		return data;
 	});
 
 	return (
 		<DetailPageStyled>
 			<Header />
 			{isLoading && <Loading />}
-			{!isLoading && <CharacterDetail character={data as ICharacterDetail} />}
+			{isError && <Error />}
+			{!isLoading && !isError && <CharacterDetail character={data as ICharacterDetail} />}
 			<span className="back-button">
 				<button
 					onClick={() => {

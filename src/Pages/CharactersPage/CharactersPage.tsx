@@ -7,12 +7,13 @@ import useAPI from '../../hooks/useAPI';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import GenderFilter from '../../components/GenderFilter/GenderFilter';
 import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
 
 const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [requestURL, setRequestURL] = useState(`${process.env.REACT_APP_API_URL}`);
 
-	const { data, isLoading, refetch } = useAPI(requestURL);
+	const { data, isLoading, refetch, isError } = useAPI(requestURL);
 
 	const paginate = (nextPage: boolean) => {
 		setRequestURL(nextPage ? data?.next : data?.prev);
@@ -28,8 +29,10 @@ const CharactersPage = () => {
 				<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 				<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 			</section>
+
 			{isLoading && <Loading />}
-			{!isLoading && (
+			{isError && <Error />}
+			{!isLoading && !isError && (
 				<>
 					<CharacterList charactersToShow={data?.results} />
 					<Footer
