@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import useAPI from '../../hooks/useAPI';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import GenderFilter from '../../components/GenderFilter/GenderFilter';
+import Loading from '../../components/Loading/Loading';
 
 const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +28,8 @@ const CharactersPage = () => {
 				<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 				<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 			</section>
-			{isLoading && <span>Loading...</span>}
+			<Loading />
+			{/* {isLoading && <span>Loading...</span>}
 			{!isLoading && (
 				<>
 					<CharacterList charactersToShow={data?.results} />
@@ -38,7 +40,7 @@ const CharactersPage = () => {
 						totalPages={data?.pages}
 					/>
 				</>
-			)}
+			)} */}
 		</CharactersPageStyled>
 	);
 };
