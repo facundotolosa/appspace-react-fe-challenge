@@ -5,6 +5,7 @@ import { CharactersPageStyled } from './CharactersPageStyled';
 import Footer from '../../components/Footer/Footer';
 import useAPI from '../../hooks/useAPI';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import GenderFilter from '../../components/GenderFilter/GenderFilter';
 
 const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -23,6 +24,7 @@ const CharactersPage = () => {
 		<CharactersPageStyled>
 			<Header />
 			<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
+			<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 			{isLoading && <span>Loading...</span>}
 			{!isLoading && (
 				<>
