@@ -12,7 +12,7 @@ const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [requestURL, setRequestURL] = useState(`${process.env.REACT_APP_API_URL}`);
 
-	const { data, isLoading, refetch } = useAPI(requestURL);
+	const { data, isLoading, refetch, isError } = useAPI(requestURL);
 
 	const paginate = (nextPage: boolean) => {
 		setRequestURL(nextPage ? data?.next : data?.prev);
@@ -29,7 +29,8 @@ const CharactersPage = () => {
 				<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
 			</section>
 			{isLoading && <Loading />}
-			{!isLoading && (
+			{isError && <span>Error getting the data. Please try again later :(</span>}
+			{!isLoading && !isError && (
 				<>
 					<CharacterList charactersToShow={data?.results} />
 					<Footer
