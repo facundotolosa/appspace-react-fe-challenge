@@ -10,11 +10,7 @@ export const SearchBarStyled = styled.div`
 	justify-content: center;
 	flex-direction: row;
 	color: white;
-	z-index: 20;
-	justify-content: space-around;
-	margin: 20px auto;
-	padding: 0 8px;
-	margin-bottom: 0px;
+	padding: 0 0 0 8px;
 
 	label {
 		display: none;
@@ -53,25 +49,10 @@ export const SearchBarStyled = styled.div`
 		display: contents;
 		width: 150px;
 		height: 30px;
-		background-color: #fff;
-		border-radius: 15px;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: row;
-		color: white;
-		z-index: 20;
-		justify-content: space-around;
-		margin: 10px auto;
-
-		label {
-			display: none;
-		}
 
 		input {
-			height: 20px;
 			width: 105px;
-			border: none;
 			margin-left: 2px;
 		}
 

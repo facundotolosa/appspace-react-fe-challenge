@@ -55,5 +55,12 @@
 		"eslint-config-prettier": "^8.5.0",
 		"msw": "^0.47.4",
 		"prettier": "^2.7.1"
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"!src/index.tsx",
+			"!src/styledMainTheme.ts",
+			"!src/react-app-env.d.ts"
+		]
 	}
 }
