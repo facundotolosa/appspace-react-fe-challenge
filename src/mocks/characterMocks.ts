@@ -110,3 +110,85 @@ export const apiResponseTwoCharacters = {
 		}
 	]
 };
+
+export const apiResponsePageOne = {
+	info: {
+		count: 2,
+		pages: 3,
+		next: 'https://rickandmortyapi.com/api/character/?page=2',
+		prev: null
+	},
+	results: [
+		{
+			id: 1,
+			name: 'Mock character page one',
+			status: 'Alive',
+			species: 'Human',
+			type: '',
+			gender: 'Male',
+			origin: {
+				name: '',
+				url: 'https://rickandmortyapi.com/api/location/1'
+			},
+			location: {
+				name: '',
+				url: 'https://rickandmortyapi.com/api/location/3'
+			},
+			image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+			episode: ['https://rickandmortyapi.com/api/episode/1'],
+			url: 'https://rickandmortyapi.com/api/character/1',
+			created: '2017-11-04T18:48:46.250Z'
+		},
+		{
+			id: 1,
+			name: 'Mock character 2',
+			status: 'Alive',
+			species: 'Human',
+			type: '',
+			gender: 'Male',
+			origin: {
+				name: '',
+				url: 'https://rickandmortyapi.com/api/location/1'
+			},
+			location: {
+				name: '',
+				url: 'https://rickandmortyapi.com/api/location/3'
+			},
+			image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+			episode: ['https://rickandmortyapi.com/api/episode/1'],
+			url: 'https://rickandmortyapi.com/api/character/1',
+			created: '2017-11-04T18:48:46.250Z'
+		}
+	]
+};
+
+export const apiResponsePageTwo = {
+	info: {
+		count: 3,
+		pages: 3,
+		next: 'https://rickandmortyapi.com/api/character/?page=3',
+		prev: 'https://rickandmortyapi.com/api/character/'
+	},
+	results: [
+		{
+			id: 1,
+			name: 'Mock character page two',
+			status: 'Alive',
+			species: 'Human',
+			type: '',
+			gender: 'Male',
+			origin: {
+				name: '',
+				url: 'https://rickandmortyapi.com/api/location/1'
+			},
+			location: {
+				name: '',
+				url: 'https://rickandmortyapi.com/api/location/3'
+			},
+			image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+			episode: ['https://rickandmortyapi.com/api/episode/1'],
+			url: 'https://rickandmortyapi.com/api/character/1',
+			created: '2017-11-04T18:48:46.250Z'
+		}
+	]
+};

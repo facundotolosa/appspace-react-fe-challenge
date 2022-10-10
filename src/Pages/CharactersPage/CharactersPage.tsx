@@ -37,8 +37,12 @@ const CharactersPage = () => {
 					<CharacterList charactersToShow={data?.results} />
 					<Footer
 						actualPage={currentPage}
-						nextPage={() => paginate(true)}
-						previousPage={() => paginate(false)}
+						nextPage={() => {
+							paginate(true);
+						}}
+						previousPage={() => {
+							paginate(false);
+						}}
 						totalPages={data?.info.pages}
 					/>
 				</>
