@@ -18,7 +18,7 @@ export const LoadingStyled = styled.div`
 	}
 
 	span {
-		font-family: 'Roboto', sans-serif;
+		font-family: ${props => props.theme.secondaryFont};
 		font-size: 20px;
 		color: black;
 	}

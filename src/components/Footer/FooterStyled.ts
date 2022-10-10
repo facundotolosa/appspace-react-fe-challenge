@@ -9,7 +9,7 @@ export const FooterStyled = styled.footer`
 	align-items: center;
 	justify-content: center;
 	gap: 25px;
-	font-family: 'Koulen', sans-serif;
+	font-family: ${props => props.theme.tertiaryFont};
 	font-size: 30px;
 
 	.pages {

@@ -10,7 +10,7 @@ export const DetailPageStyled = styled.div`
 		justify-content: center;
 
 		button {
-			font-family: 'Roboto', sans-serif;
+			font-family: ${props => props.theme.secondaryFont};
 			font-size: 16px;
 			color: white;
 			font-weight: 600;

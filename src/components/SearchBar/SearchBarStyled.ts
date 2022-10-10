@@ -22,7 +22,7 @@ export const SearchBarStyled = styled.div`
 		width: 130px;
 		border: none;
 		font-size: 16px;
-		font-family: 'Roboto', sans-serif;
+		font-family: ${props => props.theme.secondaryFont};
 	}
 
 	input:focus {
