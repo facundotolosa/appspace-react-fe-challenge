@@ -40,10 +40,11 @@ export const CharacterStyled = styled.li`
 
 	.more-info-button {
 		width: 100px;
-		height: 22px;
-		font-size: 22px;
+		height: 27px;
+		font-size: 27px;
 		background-color: transparent;
 		color: white;
+		font-family: 'Gemunu Libre', sans-serif;
 		text-decoration: underline white;
 		text-align: right;
 		padding: 0px;
