@@ -16,7 +16,6 @@ const CharactersPage = () => {
 	const { data, isLoading, refetch, isError } = useAPI(requestURL);
 
 	const paginate = (nextPage: boolean) => {
-		console.log(data);
 		setRequestURL(nextPage ? data?.info.next : data?.info.prev);
 		setCurrentPage(nextPage ? currentPage + 1 : currentPage - 1);
 		window.scrollTo(0, 0);
