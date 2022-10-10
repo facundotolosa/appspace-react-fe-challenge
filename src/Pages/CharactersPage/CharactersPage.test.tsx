@@ -1,9 +1,9 @@
-import { render, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CharactersPage from './CharactersPage';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { apiResponsePageOne, apiResponsePageTwo, characterDetail } from '../../mocks/characterMocks';
+import { apiResponsePageOne, apiResponsePageTwo } from '../../mocks/characterMocks';
 import { setLogger } from 'react-query';
 
 const mockUseNavigate = jest.fn();
