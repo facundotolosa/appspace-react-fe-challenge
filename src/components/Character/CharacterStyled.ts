@@ -8,7 +8,7 @@ export const CharacterStyled = styled.li`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	font-family: 'Gemunu Libre', sans-serif;
+	font-family: ${props => props.theme.primaryFont};
 	border-radius: 5px;
 
 	.character-info-picture {
@@ -44,7 +44,7 @@ export const CharacterStyled = styled.li`
 		font-size: 27px;
 		background-color: transparent;
 		color: white;
-		font-family: 'Gemunu Libre', sans-serif;
+		font-family: ${props => props.theme.primaryFont};
 		text-decoration: underline white;
 		text-align: right;
 		padding: 0px;

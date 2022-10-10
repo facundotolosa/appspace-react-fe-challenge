@@ -5,7 +5,7 @@ export const CharacterDetailStyled = styled.div`
 	background-color: ${props => props.theme.firstColor};
 	padding: 20px;
 	box-shadow: 4px 4px 9px -1px rgba(0, 0, 0, 0.75);
-	font-family: 'Gemunu Libre', sans-serif;
+	font-family: ${props => props.theme.primaryFont};
 	color: white;
 	border-radius: 5px;
 	display: flex;

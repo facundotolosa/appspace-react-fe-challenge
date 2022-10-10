@@ -8,6 +8,6 @@ export const ErrorStyled = styled.div`
 
 	span {
 		font-size: 20px;
-		font-family: 'Roboto', sans-serif;
+		font-family: ${props => props.theme.secondaryFont};
 	}
 `;

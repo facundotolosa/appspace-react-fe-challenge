@@ -9,7 +9,7 @@ export const HeaderStyled = styled.header`
 	flex-direction: column;
 	justify-content: center;
 	color: white;
-	font-family: 'Roboto', sans-serif;
+	font-family: ${props => props.theme.secondaryFont};
 	align-items: center;
 
 	.name {

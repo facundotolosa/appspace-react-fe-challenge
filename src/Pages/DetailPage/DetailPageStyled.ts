@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DetailPageStyled = styled.div`
-	background-color: ${props => props.theme.fifthColor};
+	background-color: ${props => props.theme.thirdColor};
 	min-height: 100vh;
 	padding-bottom: 10px;
 
@@ -10,7 +10,7 @@ export const DetailPageStyled = styled.div`
 		justify-content: center;
 
 		button {
-			font-family: 'Roboto', sans-serif;
+			font-family: ${props => props.theme.secondaryFont};
 			font-size: 16px;
 			color: white;
 			font-weight: 600;

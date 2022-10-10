@@ -10,7 +10,7 @@ export const GenderFilterStyled = styled.div`
 		font-size: 16px;
 
 		option {
-			font-family: 'Roboto', sans-serif;
+			font-family: ${props => props.theme.secondaryFont};
 		}
 	}
 

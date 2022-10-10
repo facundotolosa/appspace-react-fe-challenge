@@ -1,11 +1,11 @@
 const styledMainTheme = {
 	firstColor: '#142850',
 	secondColor: '#6D99C8',
-	thirdColor: '#0C7B93',
+	thirdColor: '#BBE1FA',
 	fourthColor: '#00A8CC',
-	fifthColor: '#BBE1FA',
-	primaryFont: "'Poppins', sans-serif",
-	secondaryFont: "'Roboto', sans-serif"
+	primaryFont: "'Gemunu Libre', sans-serif",
+	secondaryFont: "'Roboto', sans-serif",
+	tertiaryFont: "'Koulen', sans-serif"
 };
 
 export default styledMainTheme;
