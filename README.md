@@ -27,7 +27,7 @@ This component style has a 600px width breakpoint so it will be seen different d
 This component will receive an array of characters and render as many Character components as it is in the array.
 
 ### 🔹 Error
-This component has the responsability of showing an error message. An improvement that needs to be done here, it's that it should be a received message via props to have a proper error management and not the same message for every error. I will expand on this later at "Things that can improve the project".
+This component has the responsability of showing an error message. An improvement that needs to be done here, it's that it should be a received message via props to have a proper error management and not the same message for every error. I will expand on this later at "Things that could improve the project".
 
 ### 🔹 Footer
 This component will receive through props two functions that it will call respectively when one of the two buttons are clicked. It will also receive two numbers: the actual page and the total of pages. It will use this two numbers to know when to disable one of the two buttons, and it will also render the number of the actual page.
@@ -48,6 +48,42 @@ This component has the responsability to show a spinner and a "Loading..." text.
 ### 🔹 Header
 This component will show the Rick & Morty logo and a level one heading with the title of the app, and also my name 😬
 
+## Pages
+### 🔹 CharactersPage
+This page will use the "useAPI" custom hook to fetch the data from the API. This custom hook uses the hook "useQuery" from react-query and return the same object. 
+It may seem that taking this logic to a custom hook it's not necesary (and it's actually not...), but I wanted to work with at least one custom hook at this project to show that I'm used to do it.
+
+From the returned object of the custom hook, at this page we will use three variables:
+- isLoading: with a conditional rendering we will show the Loading component while this boolean is true.
+- isError: with a conditional rendering we will show the Error component when this boolean is true.
+- data: when it's defined and isLoading and isError are false, it will be used the necesary data from the API response (list of characters, next page, prev page, etc).
+
+This page has a function for pagination, that will pass it two times via props to the Footer component. This function will set the "requestURL" state variable to the next page or previous page received at "data", depending if the previous or next button is pressed. The same thing applies to the "actualPage" state variable.
+
+This page will also render the SearchBar and the GenderFilter components, and it will pass them via props the setter functions "setCurrentPage" and "setRequestURL".
+
+Everytime that the state variable "requestURL" changes, the hook useQuery will automatically do a refetch, and the component will be rendered again and show the new data.
+
+### 🔹 DetailPage
+This page will use the hook "useParams" from react-router-dom to get the id of the character to ask to the API. It will use directly the useQuery hook to get the data and the booleans isLoading and isError.
+
+It will use this two booleans in the same way that the CharactersPage use them, and when the data is defined it will render the CharacterDetail component passing it vía props the data about the character that it needs to show.
+
+## Metrics
+
+### 🚀 Lighthouse
+
+<img src="https://i.ibb.co/jMGwzq6/Captura2.png" width="600">
+
+I've used Lighthouse to check the performance, accesibility, best practices and SEO.
+I find this tool very useful to view this metrics, get info about them and how to improve them.
+
+### 📈 Testing
+
+<img src="https://i.ibb.co/nrJ54Rq/Captura3.png" width="600">
+
+The application is 100% tested with tests for each component and integration tests for CharactersPage and DetailPage.
+
 ## Some aclarations about the technologies used for the project
 ### 🔸 Mock Service Worker (MSW)
 I integrated MSW in this project for mocking the responses from the API in the tests. I was used to mock Axios in each test suit but then I read an [article by Kent C. Dodds](https://kentcdodds.com/blog/stop-mocking-fetch/)🔗 explaining why this is a bad idea and why MSW is a better alternative.
@@ -65,12 +101,14 @@ This library was used for giving a particular CSS style to each React component.
 It also provides some cool features like nesting and the posibility to use a Theme Provider which I did to have some colors and fonts saved in a unique place, which could make it easier if that needs to be changed later.
 
 One particular thing that could be seen in my code is the way that I use the TSX tags that Styled Components generates: 
-I'm used to use only one tag for each component because I found it more easier to debug CSS later if the class names of the tags are put by me and no the ones that Styled Components generates. Despite this, it's only a habit that I have and I would feel also confortable making one styled tag for each style that I need to implement.
+I'm used to use only one tag for each component because I found it more easier to debug CSS later if the class names of the tags are put by me and no the ones that Styled Components generates. Despite this, it's only an habit that I have and I would feel also confortable making one styled tag for each style that I need to implement.
 
 ### 🔸 React Router DOM
 I used React Router DOM to implement routing at the application. Routes are the core of Single Page Applications, since React focuses only on building user interfaces and it doesn't provide a built-in solution for routing.
 
 
+## Things that could improve the project
+### ...
 
 ## Available Scripts
 
