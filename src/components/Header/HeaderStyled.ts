@@ -25,7 +25,7 @@ export const HeaderStyled = styled.header`
 
 	.title {
 		margin: 0;
-		font-size: 28px;
+		font-size: 25px;
 	}
 
 	img {

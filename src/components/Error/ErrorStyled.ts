@@ -9,5 +9,6 @@ export const ErrorStyled = styled.div`
 	span {
 		font-size: 20px;
 		font-family: ${props => props.theme.secondaryFont};
+		text-align: center;
 	}
 `;
