@@ -88,7 +88,7 @@ The application is 100% tested with tests for each component and integration tes
 
 ## Some aclarations about the technologies used for the project
 ### 🔸 Mock Service Worker (MSW)
-I integrated MSW in this project for mocking the responses from the API in the tests. I was used to mock Axios in each test suite but then I read an [article by Kent C. Dodds](https://kentcdodds.com/blog/stop-mocking-fetch/)🔗 explaining why this is a bad idea and why MSW is a better alternative.
+I've integrated MSW in this project for mocking the responses from the API in the tests. I was used to mock Axios in each test suite but then I read an [article by Kent C. Dodds](https://kentcdodds.com/blog/stop-mocking-fetch/)🔗 explaining why this is a bad idea and why MSW is a better alternative.
 
 ### 🔸 React-query
 I had never worked with this library until now. I was used to fetch data in a component using the hooks useEffect and useState, but for this project I've been recommended to try this, and I'm so glad that I did it.
