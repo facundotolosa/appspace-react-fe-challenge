@@ -6,7 +6,7 @@ You can use the Readme to document and explain your decisions.
 
 ---
 ## Introduction
-Making this challenge was so fun for me. It's my first project outside ISDI Coders after two bootcamps, one as a student and the second one as an Assistant Teacher. Working on this challenge made me confirm that the last eight months of hard work really worth it. I felt so confortable while doing this, implementing things that I've learned and taking knowledge of a lot of new things.
+Making this challenge was so fun for me. It's my first project outside ISDI Coders after two bootcamps, one as a student and the second one as an Assistant Teacher. Working on this challenge made me confirm that the last eight months of hard work really worth it. I felt so comfortable while doing this, implementing things that I've learned and taking knowledge of a lot of new things.
 
 This proyect was started at 4/10/2022 and delivered to revision at 11/10/2022.
 
@@ -113,7 +113,7 @@ I used React Router DOM to implement routing at the application. Routes are the 
 ### The app is not able to order the items.
 One problem that I wasn't able to sort is to order the items. I tried to do it by the name of the character but the API already has them ordered (without taking into account the first five characters). 
 
-Also, I prepared this application to take advantage of the pagination that the API provides to the consumer, and for ordering all the items I should make a request for all of them, order them, and then show them with a pagination made at the front. This is the only solution that I thinked of, and I'm not happy with it because it won't make sense to ask for data that you probably wont show.
+Also, I prepared this application to take advantage of the pagination that the API provides to the consumer, and for ordering all the items I should make a request for all of them, order them, and then show them with a pagination made at the front. This is the only solution that I thinked of, and I'm not happy with it because it won't make sense to ask for data that you probably won't show.
 
 ### When you go back from the DetailPage, you start at CharactersPage from the beginning.
 This happens because all the state variables from CharactersPage get lost when you render the DetailPage, so you loose the currentPage and the requestURL.
