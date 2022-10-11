@@ -13,13 +13,12 @@ const CharactersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [requestURL, setRequestURL] = useState(`${process.env.REACT_APP_API_URL}`);
 
-	const { data, isLoading, refetch, isError } = useAPI(requestURL);
+	const { data, isLoading, isError } = useAPI(requestURL);
 
 	const paginate = (nextPage: boolean) => {
 		setRequestURL(nextPage ? data?.info.next : data?.info.prev);
 		setCurrentPage(nextPage ? currentPage + 1 : currentPage - 1);
 		window.scrollTo(0, 0);
-		refetch();
 	};
 
 	return (
