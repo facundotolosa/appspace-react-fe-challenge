@@ -41,7 +41,7 @@ const SearchBar = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => {
 					placeholder="Search..."
 				/>
 
-				<button type="submit">
+				<button type="submit" aria-label="submit-search">
 					<FontAwesomeIcon icon={faMagnifyingGlass} color="black" type="submit" />
 				</button>
 			</form>
