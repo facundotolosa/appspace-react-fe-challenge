@@ -119,6 +119,9 @@ Also, I prepared this application to take advantage of the pagination that the A
 This happens because all the state variables from CharactersPage get lost when you render the DetailPage, so you loose the currentPage and the requestURL.
 A possible solution for this would be to add a Context to the app and extract this two variables to it, so they won't get lost as you navigate through the app.
 
+### Error handling
+The application has only one error message, and this could be improved by showing custom messages for each error code that the API returns.
+
 
 ## Available Scripts
 
