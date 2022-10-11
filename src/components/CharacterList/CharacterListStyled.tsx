@@ -9,5 +9,5 @@ export const CharacterListStyled = styled.ul`
 	flex-wrap: wrap;
 	gap: 20px;
 	justify-content: center;
-	max-width: 1000px;
+	max-width: 1200px;
 `;
