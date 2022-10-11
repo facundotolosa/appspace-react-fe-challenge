@@ -8,6 +8,8 @@ You can use the Readme to document and explain your decisions.
 ## Introduction
 Making this challenge was so fun for me. It's my first project outside ISDI Coders after two bootcamps, one as a student and the second one as an Assistant Teacher. Working on this challenge made me confirm that the last eight months of hard work really worth it. I felt so confortable while doing this, implementing things that I've learned and taking knowledge of a lot of new things.
 
+This proyect was started at 4/10/2022 and delivered to revision at 11/10/2022.
+
 ## About the app
 The [Rick & Morty React FE Challenge](https://appspace-challenge-facundo-tolosa.netlify.app/)🔗 is a SPA that shows the entire list of characters of the Rick & Morty series. The user can search by name using the search bar, or use the filter by gender. Also, every character has a detail page showing more information about it, and a red or green dot depending on the status of the character: red if it's dead, and green if it's alive.
 
@@ -86,7 +88,7 @@ The application is 100% tested with tests for each component and integration tes
 
 ## Some aclarations about the technologies used for the project
 ### 🔸 Mock Service Worker (MSW)
-I integrated MSW in this project for mocking the responses from the API in the tests. I was used to mock Axios in each test suit but then I read an [article by Kent C. Dodds](https://kentcdodds.com/blog/stop-mocking-fetch/)🔗 explaining why this is a bad idea and why MSW is a better alternative.
+I integrated MSW in this project for mocking the responses from the API in the tests. I was used to mock Axios in each test suite but then I read an [article by Kent C. Dodds](https://kentcdodds.com/blog/stop-mocking-fetch/)🔗 explaining why this is a bad idea and why MSW is a better alternative.
 
 ### 🔸 React-query
 I had never worked with this library until now. I was used to fetch data in a component using the hooks useEffect and useState, but for this project I've been recommended to try this, and I'm so glad that I did it.
@@ -108,7 +110,15 @@ I used React Router DOM to implement routing at the application. Routes are the 
 
 
 ## Things that could improve the project
-### ...
+### The app is not able to order the items.
+One problem that I wasn't able to sort is to order the items. I tried to do it by the name of the character but the API already has them ordered (without taking into account the first five characters). 
+
+Also, I prepared this application to take advantage of the pagination that the API provides to the consumer, and for ordering all the items I should make a request for all of them, order them, and then show them with a pagination made at the front. This is the only solution that I thinked of, and I'm not happy with it because it won't make sense to ask for data that you probably wont show.
+
+### When you go back from the DetailPage, you start at CharactersPage from the beginning.
+This happens because all the state variables from CharactersPage get lost when you render the DetailPage, so you loose the currentPage and the requestURL.
+A possible solution for this would be to add a Context to the app and extract this two variables to it, so they won't get lost as you navigate through the app.
+
 
 ## Available Scripts
 
