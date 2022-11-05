@@ -18,7 +18,8 @@ const CharactersPage = () => {
 	const { data, isLoading, isError } = useAPI(requestURL);
 
 	const paginate = (nextPage: boolean) => {
-		setParams({ page: `${nextPage ? currentPage + 1 : currentPage - 1}` });
+		params.set('page', `${nextPage ? currentPage + 1 : currentPage - 1}`);
+		setParams(params);
 		setRequestURL(nextPage ? data?.info.next : data?.info.prev);
 		setCurrentPage(nextPage ? currentPage + 1 : currentPage - 1);
 		window.scrollTo(0, 0);
@@ -28,7 +29,12 @@ const CharactersPage = () => {
 		<CharactersPageStyled>
 			<Header />
 			<section className="filters">
-				<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
+				<SearchBar
+					setRequestURL={setRequestURL}
+					setCurrentPage={setCurrentPage}
+					params={params}
+					setParams={setParams}
+				/>
 				<GenderFilter
 					setRequestURL={setRequestURL}
 					setCurrentPage={setCurrentPage}
