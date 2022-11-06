@@ -10,6 +10,7 @@ import Loading from '../../components/Loading/Loading';
 import Error from '../../components/Error/Error';
 import { useSearchParams } from 'react-router-dom';
 import { getFirstRequestUrl } from '../../utils/getFirstRequestUrl';
+import { ICharacter } from '../../types/characterInterfaces';
 
 const CharactersPage = () => {
 	const [params, setParams] = useSearchParams();
@@ -22,7 +23,7 @@ const CharactersPage = () => {
 	const paginate = (nextPage: boolean) => {
 		params.set('page', `${nextPage ? currentPage + 1 : currentPage - 1}`);
 		setParams(params);
-		setRequestURL(nextPage ? data?.info.next : data?.info.prev);
+		setRequestURL(nextPage ? (data?.info.next as string) : (data?.info.prev as string));
 		setCurrentPage(nextPage ? currentPage + 1 : currentPage - 1);
 		window.scrollTo(0, 0);
 	};
@@ -49,12 +50,12 @@ const CharactersPage = () => {
 			{isError && <Error />}
 			{!isLoading && !isError && (
 				<>
-					<CharacterList charactersToShow={data?.results} />
+					<CharacterList charactersToShow={data?.results as ICharacter[]} />
 					<Footer
 						actualPage={currentPage}
 						nextPage={() => paginate(true)}
 						previousPage={() => paginate(false)}
-						totalPages={data?.info.pages}
+						totalPages={data?.info.pages as number}
 					/>
 				</>
 			)}

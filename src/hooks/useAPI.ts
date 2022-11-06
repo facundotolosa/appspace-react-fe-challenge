@@ -1,9 +1,10 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import { apiResponse } from '../types/apiResponseInterfaces';
 
 const useAPI = (requestUrl: string) => {
 	const useQueryResponse = useQuery(['characters', requestUrl], async () => {
-		const { data } = await axios.get(requestUrl);
+		const { data }: apiResponse = await axios.get(requestUrl);
 
 		return data;
 	});
