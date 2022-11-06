@@ -8,14 +8,20 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import GenderFilter from '../../components/GenderFilter/GenderFilter';
 import Loading from '../../components/Loading/Loading';
 import Error from '../../components/Error/Error';
+import { useSearchParams } from 'react-router-dom';
+import { getFirstRequestUrl } from '../../utils/getFirstRequestUrl';
 
 const CharactersPage = () => {
-	const [currentPage, setCurrentPage] = useState(1);
-	const [requestURL, setRequestURL] = useState(`${process.env.REACT_APP_API_URL}`);
-
+	const [params, setParams] = useSearchParams();
+	const [currentPage, setCurrentPage] = useState(params.get('page') ? Number(params.get('page') as string) : 1);
+	const [requestURL, setRequestURL] = useState(
+		getFirstRequestUrl(params.get('page'), params.get('gender'), params.get('name'))
+	);
 	const { data, isLoading, isError } = useAPI(requestURL);
 
 	const paginate = (nextPage: boolean) => {
+		params.set('page', `${nextPage ? currentPage + 1 : currentPage - 1}`);
+		setParams(params);
 		setRequestURL(nextPage ? data?.info.next : data?.info.prev);
 		setCurrentPage(nextPage ? currentPage + 1 : currentPage - 1);
 		window.scrollTo(0, 0);
@@ -25,8 +31,18 @@ const CharactersPage = () => {
 		<CharactersPageStyled>
 			<Header />
 			<section className="filters">
-				<SearchBar setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
-				<GenderFilter setRequestURL={setRequestURL} setCurrentPage={setCurrentPage} />
+				<SearchBar
+					setRequestURL={setRequestURL}
+					setCurrentPage={setCurrentPage}
+					params={params}
+					setParams={setParams}
+				/>
+				<GenderFilter
+					setRequestURL={setRequestURL}
+					setCurrentPage={setCurrentPage}
+					params={params}
+					setParams={setParams}
+				/>
 			</section>
 
 			{isLoading && <Loading />}

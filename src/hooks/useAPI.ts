@@ -10,4 +10,5 @@ const useAPI = (requestUrl: string) => {
 
 	return useQueryResponse;
 };
+
 export default useAPI;

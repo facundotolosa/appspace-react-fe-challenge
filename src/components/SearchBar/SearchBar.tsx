@@ -6,9 +6,11 @@ import { SearchBarStyled } from './SearchBarStyled';
 interface Props {
 	setRequestURL: Dispatch<SetStateAction<string>>;
 	setCurrentPage: Dispatch<SetStateAction<number>>;
+	params: URLSearchParams;
+	setParams: any;
 }
 
-const SearchBar = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => {
+const SearchBar = ({ setRequestURL, setCurrentPage, params, setParams }: Props): JSX.Element => {
 	const initialFormValue = {
 		search: ''
 	};
@@ -26,6 +28,16 @@ const SearchBar = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => {
 		event.preventDefault();
 		setCurrentPage(1);
 		setRequestURL(`${process.env.REACT_APP_API_URL}?name=${formValues.search}`);
+		params.delete('page');
+		params.delete('gender');
+
+		if (formValues.search !== '') {
+			params.set('name', formValues.search);
+			setParams(params);
+			return;
+		}
+		params.delete('name');
+		setParams(params);
 	};
 
 	return (

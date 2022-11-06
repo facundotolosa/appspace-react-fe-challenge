@@ -1,15 +1,31 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { NavigateOptions, URLSearchParamsInit } from 'react-router-dom';
 import { GenderFilterStyled } from './GenderFilterStyled';
 
+type SetURLSearchParams = (
+	nextInit?: URLSearchParamsInit | ((prev: URLSearchParams) => URLSearchParamsInit),
+	navigateOpts?: NavigateOptions
+) => void;
 interface Props {
 	setRequestURL: Dispatch<SetStateAction<string>>;
 	setCurrentPage: Dispatch<SetStateAction<number>>;
+	params: URLSearchParams;
+	setParams: SetURLSearchParams;
 }
 
-const GenderFilter = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => {
+const GenderFilter = ({ setRequestURL, setCurrentPage, params, setParams }: Props): JSX.Element => {
 	const handleGenderInputChange = (event: ChangeEvent<HTMLSelectElement>): void => {
 		setCurrentPage(1);
 		setRequestURL(`${process.env.REACT_APP_API_URL}?gender=${event.target.value}`);
+		params.delete('page');
+
+		if (event.target.value !== '') {
+			params.set('gender', event.target.value);
+			setParams(params);
+			return;
+		}
+		params.delete('gender');
+		setParams(params);
 	};
 
 	return (
@@ -17,9 +33,9 @@ const GenderFilter = ({ setRequestURL, setCurrentPage }: Props): JSX.Element => 
 			<label htmlFor="Gender">Gender</label>
 			<select name="Gender" id="Gender" onChange={handleGenderInputChange} className="select-gender">
 				<option value="">All genders</option>
-				<option value="Male">Male</option>
-				<option value="Female">Female</option>
-				<option value="Genderless">Genderless</option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="genderless">Genderless</option>
 				<option value="unknown">Unknown</option>
 			</select>
 		</GenderFilterStyled>
