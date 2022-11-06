@@ -31,4 +31,27 @@ describe('Given a SearchBar component', () => {
 			expect(setRequestURLMock).toHaveBeenCalledWith(urlRequest);
 		});
 	});
+
+	describe('When the search input is empty and its submitted', () => {
+		test('Then the delete method of the received params will be called with "name"', () => {
+			const setRequestURLMock: Dispatch<SetStateAction<string>> = jest.fn();
+			const setCurrentPageMock: Dispatch<SetStateAction<number>> = jest.fn();
+			const params = new URLSearchParams();
+			params.delete = jest.fn();
+
+			render(
+				<SearchBar
+					setRequestURL={setRequestURLMock}
+					setCurrentPage={setCurrentPageMock}
+					params={params}
+					setParams={() => {}}
+				/>
+			);
+
+			const button = screen.getByRole('button');
+			userEvent.click(button);
+
+			expect(params.delete).toHaveBeenCalledWith('name');
+		});
+	});
 });
