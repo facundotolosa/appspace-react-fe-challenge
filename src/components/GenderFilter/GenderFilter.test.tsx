@@ -28,4 +28,27 @@ describe('Given a GenderFilter component', () => {
 			expect(setRequestURLMock).toHaveBeenCalledWith(urlRequest);
 		});
 	});
+
+	describe('When the option "All genders" is selected', () => {
+		test('Then the delete method of the received params will be called with "gender"', () => {
+			const setRequestURLMock: Dispatch<SetStateAction<string>> = jest.fn();
+			const setCurrentPageMock: Dispatch<SetStateAction<number>> = jest.fn();
+			const params = new URLSearchParams();
+			params.delete = jest.fn();
+
+			render(
+				<GenderFilter
+					setRequestURL={setRequestURLMock}
+					setCurrentPage={setCurrentPageMock}
+					setParams={() => {}}
+					params={params}
+				/>
+			);
+
+			const options = screen.getAllByRole('option');
+			userEvent.selectOptions(screen.getByRole('combobox'), [options[0]]);
+
+			expect(params.delete).toHaveBeenCalledWith('gender');
+		});
+	});
 });
