@@ -60,10 +60,10 @@ describe('Given the DetailPage component', () => {
 
 			await screen.findByRole('heading', { level: 2, name: characterDetail.name });
 
-			const receivedButton = screen.getByRole('button', { name: 'Back to home' });
+			const receivedButton = screen.getByRole('button', { name: 'Go back' });
 			userEvent.click(receivedButton);
 
-			expect(mockUseNavigate).toHaveBeenCalledWith('/characters');
+			expect(mockUseNavigate).toHaveBeenCalledWith(-1);
 		});
 	});
 
