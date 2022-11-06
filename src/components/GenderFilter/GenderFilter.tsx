@@ -1,11 +1,16 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { NavigateOptions, URLSearchParamsInit } from 'react-router-dom';
 import { GenderFilterStyled } from './GenderFilterStyled';
 
+type SetURLSearchParams = (
+	nextInit?: URLSearchParamsInit | ((prev: URLSearchParams) => URLSearchParamsInit),
+	navigateOpts?: NavigateOptions
+) => void;
 interface Props {
 	setRequestURL: Dispatch<SetStateAction<string>>;
 	setCurrentPage: Dispatch<SetStateAction<number>>;
 	params: URLSearchParams;
-	setParams: any;
+	setParams: SetURLSearchParams;
 }
 
 const GenderFilter = ({ setRequestURL, setCurrentPage, params, setParams }: Props): JSX.Element => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CharacterList from '../../components/CharacterList/CharacterList';
 import Header from '../../components/Header/Header';
 import { CharactersPageStyled } from './CharactersPageStyled';
