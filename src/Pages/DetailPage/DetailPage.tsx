@@ -26,14 +26,7 @@ const DetailPage = () => {
 			{isError && <Error />}
 			{!isLoading && !isError && <CharacterDetail character={data as ICharacterDetail} />}
 			<span className="back-button">
-				<button
-					onClick={() => {
-						window.scrollTo(0, 0);
-						navigate('/characters');
-					}}
-				>
-					Back to home
-				</button>
+				<button onClick={() => navigate(-1)}>Go back</button>
 			</span>
 		</DetailPageStyled>
 	);
