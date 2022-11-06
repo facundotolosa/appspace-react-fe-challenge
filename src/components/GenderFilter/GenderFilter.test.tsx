@@ -10,14 +10,13 @@ describe('Given a GenderFilter component', () => {
 			const setCurrentPageMock: Dispatch<SetStateAction<number>> = jest.fn();
 			const genderToSearch = 'male';
 			const urlRequest = `${process.env.REACT_APP_API_URL}?gender=${genderToSearch}`;
-			const setParams = () => {};
 			const params = new URLSearchParams();
 
 			render(
 				<GenderFilter
 					setRequestURL={setRequestURLMock}
 					setCurrentPage={setCurrentPageMock}
-					setParams={setParams}
+					setParams={() => {}}
 					params={params}
 				/>
 			);
