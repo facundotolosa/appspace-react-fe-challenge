@@ -9,28 +9,14 @@ import GenderFilter from '../../components/GenderFilter/GenderFilter';
 import Loading from '../../components/Loading/Loading';
 import Error from '../../components/Error/Error';
 import { useSearchParams } from 'react-router-dom';
+import { getFirstRequestUrl } from '../../utils/getFirstRequestUrl';
 
 const CharactersPage = () => {
 	const [params, setParams] = useSearchParams();
 	const [currentPage, setCurrentPage] = useState(params.get('page') ? Number(params.get('page') as string) : 1);
-
-	const getFirstRequestUrl = (): string => {
-		if (params.get('page')) {
-			return `${process.env.REACT_APP_API_URL}/?page=${params.get('page')}`;
-		}
-
-		if (params.get('gender')) {
-			return `${process.env.REACT_APP_API_URL}/?gender=${params.get('gender')}`;
-		}
-
-		if (params.get('name')) {
-			return `${process.env.REACT_APP_API_URL}/?name=${params.get('name')}`;
-		}
-
-		return `${process.env.REACT_APP_API_URL}`;
-	};
-
-	const [requestURL, setRequestURL] = useState(getFirstRequestUrl());
+	const [requestURL, setRequestURL] = useState(
+		getFirstRequestUrl(params.get('page'), params.get('gender'), params.get('name'))
+	);
 	const { data, isLoading, isError } = useAPI(requestURL);
 
 	const paginate = (nextPage: boolean) => {
