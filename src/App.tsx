@@ -1,17 +1,21 @@
 import { ThemeProvider } from 'styled-components';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import styledMainTheme from './styledMainTheme';
-import CharactersPage from './Pages/CharactersPage/CharactersPage';
-import DetailPage from './Pages/DetailPage/DetailPage';
+import { lazy, Suspense } from 'react';
+
+const DetailPage = lazy(() => import('./Pages/DetailPage/DetailPage'));
+const CharactersPage = lazy(() => import('./Pages/CharactersPage/CharactersPage'));
 
 const App = () => {
 	return (
 		<ThemeProvider theme={styledMainTheme}>
-			<Routes>
-				<Route path="/" element={<Navigate to="/characters" />} />
-				<Route path="/characters" element={<CharactersPage />} />
-				<Route path="/character/:id" element={<DetailPage />} />
-			</Routes>
+			<Suspense>
+				<Routes>
+					<Route path="/" element={<Navigate to="/characters" />} />
+					<Route path="/characters" element={<CharactersPage />} />
+					<Route path="/character/:id" element={<DetailPage />} />
+				</Routes>
+			</Suspense>
 		</ThemeProvider>
 	);
 };
