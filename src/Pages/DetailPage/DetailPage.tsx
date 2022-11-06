@@ -8,13 +8,14 @@ import { ICharacterDetail } from '../../types/characterInterfaces';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import Error from '../../components/Error/Error';
+import { apiResponseDetail } from '../../types/apiResponseInterfaces';
 
-const DetailPage = () => {
+const DetailPage = (): JSX.Element => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
 	const { data, isLoading, isError } = useQuery(['character'], async () => {
-		const { data } = await axios.get(`${process.env.REACT_APP_API_URL}${id}`);
+		const { data }: apiResponseDetail = await axios.get(`${process.env.REACT_APP_API_URL}${id}`);
 
 		return data;
 	});
